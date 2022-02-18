@@ -1,0 +1,106 @@
+<html>
+
+<head>
+    <title>Mathler Unlimited</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js"></script>
+</head>
+
+<body>
+    <div class="main col-xs-12 container">
+        <label class="col-xs-12" id="answer">The solution is </label>
+
+        <div class="col-xs-12 col-md-6 board">
+            <div class="col-xs-12">
+
+                <div class="sum col-xs-12">
+                    <button class="btn btn-xs r1c1 box col-xs-2"></button>
+                    <button class="btn btn-xs r2c1 box col-xs-2"></button>
+                    <button class="btn btn-xs r3c1 box col-xs-2"></button>
+                    <button class="btn btn-xs r4c1 box col-xs-2"></button>
+                    <button class="btn btn-xs r5c1 box col-xs-2"></button>
+                    <button class="btn btn-xs r6c1 box col-xs-2"></button>
+                </div>
+            </div>
+            <div class="col-xs-12">
+
+                <div class="sum col-xs-12">
+                    <button class="btn btn-xs r1c2 box col-xs-2"></button>
+                    <button class="btn btn-xs r2c2 box col-xs-2"></button>
+                    <button class="btn btn-xs r3c2 box col-xs-2"></button>
+                    <button class="btn btn-xs r4c2 box col-xs-2"></button>
+                    <button class="btn btn-xs r5c2 box col-xs-2"></button>
+                    <button class="btn btn-xs r6c2 box col-xs-2"></button>
+                </div>
+            </div>
+            <div class="col-xs-12">
+
+                <div class="sum col-xs-12">
+                    <button class="btn btn-xs r1c3 box col-xs-2"></button>
+                    <button class="btn btn-xs r2c3 box col-xs-2"></button>
+                    <button class="btn btn-xs r3c3 box col-xs-2"></button>
+                    <button class="btn btn-xs r4c3 box col-xs-2"></button>
+                    <button class="btn btn-xs r5c3 box col-xs-2"></button>
+                    <button class="btn btn-xs r6c3 box col-xs-2"></button>
+                </div>
+            </div>
+            <div class="col-xs-12">
+
+                <div class="sum col-xs-12">
+                    <button class="btn btn-xs r1c4 box col-xs-2"></button>
+                    <button class="btn btn-xs r2c4 box col-xs-2"></button>
+                    <button class="btn btn-xs r3c4 box col-xs-2"></button>
+                    <button class="btn btn-xs r4c4 box col-xs-2"></button>
+                    <button class="btn btn-xs r5c4 box col-xs-2"></button>
+                    <button class="btn btn-xs r6c4 box col-xs-2"></button>
+                </div>
+            </div>
+            <div class="col-xs-12">
+
+                <div class="sum col-xs-12">
+                    <button class="btn btn-xs r1c5 box col-xs-2"></button>
+                    <button class="btn btn-xs r2c5 box col-xs-2"></button>
+                    <button class="btn btn-xs r3c5 box col-xs-2"></button>
+                    <button class="btn btn-xs r4c5 box col-xs-2"></button>
+                    <button class="btn btn-xs r5c5 box col-xs-2"></button>
+                    <button class="btn btn-xs r6c5 box col-xs-2"></button>
+                </div>
+            </div>
+            <div class="col-xs-12">
+
+                <div class="sum col-xs-12">
+                    <button class="btn btn-xs r1c6 box col-xs-2"></button>
+                    <button class="btn btn-xs r2c6 box col-xs-2"></button>
+                    <button class="btn btn-xs r3c6 box col-xs-2"></button>
+                    <button class="btn btn-xs r4c6 box col-xs-2"></button>
+                    <button class="btn btn-xs r5c6 box col-xs-2"></button>
+                    <button class="btn btn-xs r6c6 box col-xs-2"></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="noPanel col-xs-12 col-md-6">
+            <button class="col-xs-3 col-md-4 btn btn-xs no" id="1" type="submit" onclick="input('1')">1</button>
+            <button class="col-xs-3 col-md-4 btn btn-xs no" id="2" type="submit" onclick="input('2')">2</button>
+            <button class="col-xs-3 col-md-4 btn btn-xs no" id="3" type="submit" onclick="input('3')">3</button>
+            <button class="col-xs-3 col-md-4 btn btn-xs no" id="4" type="submit" onclick="input('4')">4</button>
+            <button class="col-xs-3 col-md-4 btn btn-xs no" id="5" type="submit" onclick="input('5')">5</button>
+            <button class="col-xs-3 col-md-4 btn btn-xs no" id="6" type="submit" onclick="input('6')">6</button>
+            <button class="col-xs-3 col-md-4 btn btn-xs no" id="7" type="submit" onclick="input('7')">7</button>
+            <button class="col-xs-3 col-md-4 btn btn-xs no" id="8" type="submit" onclick="input('8')">8</button>
+            <button class="col-xs-3 col-md-4 btn btn-xs no" id="9" type="submit" onclick="input('9')">9</button>
+            <button class="col-xs-3 col-md-4 btn btn-xs no" id="0" type="submit" onclick="input('0')">0</button>
+            <button class="col-xs-3 col-md-4 btn btn-xs no" id="a" type="submit" onclick="input('+')">+</button>
+            <button class="col-xs-3 col-md-4 btn btn-xs no" id="s" type="submit" onclick="input('-')">-</button>
+            <button class="col-xs-3 col-md-4 btn btn-xs no" type="submit" onclick="enter()">Enter</button>
+            <button class="col-xs-3 col-md-4 btn btn-xs no" id="m" type="submit" onclick="input('*')">*</button>
+            <button class="col-xs-3 col-md-4 btn btn-xs no" id="d" type="submit" onclick="input('/')">/</button>
+            <button class="col-xs-3 col-md-4 btn btn-xs no" type="submit" onclick="Delete()">Delete</button>
+        </div>
+    </div>
+</body>
+
+</html>
