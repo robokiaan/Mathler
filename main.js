@@ -392,17 +392,17 @@ function calculate(calculation) {
 }
 
 function generateSum() {
-    var fn = Math.round(Math.random() * 8 + 1)
-    var sn = Math.round(Math.random() * 8 + 1)
-    var tn = Math.round(Math.random() * 8 + 1)
-    var frn = Math.round(Math.random() * 8 + 1)
+    var fn = Math.round(Math.random() * 7 + 2)
+    var sn = Math.round(Math.random() * 7 + 2)
+    var tn = Math.round(Math.random() * 7 + 2)
+    var frn = Math.round(Math.random() * 7 + 2)
     var fsymbol = Math.round(Math.random() * 3)
     var ssymbol = Math.round(Math.random() * 3)
     while (fn == sn || fn == tn || fn == frn || sn == tn || sn == frn || tn == frn) {
-        fn = Math.round(Math.random() * 8 + 1)
-        sn = Math.round(Math.random() * 8 + 1)
-        tn = Math.round(Math.random() * 8 + 1)
-        frn = Math.round(Math.random() * 8 + 1)
+        fn = Math.round(Math.random() * 7 + 2)
+        sn = Math.round(Math.random() * 7 + 2)
+        tn = Math.round(Math.random() * 7 + 2)
+        frn = Math.round(Math.random() * 7 + 2)
     }
     while (fsymbol == ssymbol) {
         fsymbol = Math.round(Math.random() * 3)
