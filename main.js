@@ -2,11 +2,12 @@ var solution = {}
 var column = 1
 var row = 1
 var symbols = ['+', '-', '*', '/']
+var usedChars = [] 
 
 jQuery(document).ready(function() {
     var generatedSum = generateSum()
     var ans = calculate(generatedSum)
-    while (String(ans).includes('.') || String(ans).includes('-') || ans == Infinity || ans > 350) {
+    while (String(ans).includes('.') || String(ans).includes('-') || ans == Infinity || ans > 200) {
         generatedSum = generateSum()
         ans = calculate(generatedSum)   
     }
@@ -19,12 +20,10 @@ jQuery(document).ready(function() {
         sum: generatedSum,
         answer: String(ans)
     }
-    console.log(solution)
     jQuery('#answer').text('The solution is ' + solution.answer)
 })
 
 function input(text) {
-    console.log(`.r${row}c${column}`)
     jQuery(`.r${row}c${column}`).text(text)
     if (column == 7) {
          window.alert('Game over')
@@ -46,146 +45,164 @@ function enter() {
     var sum = `${jQuery(`.r1c${column}`).text()}${jQuery(`.r2c${column}`).text()}${jQuery(`.r3c${column}`).text()}${jQuery(`.r4c${column}`).text()}${jQuery(`.r5c${column}`).text()}${jQuery(`.r6c${column}`).text()}`
     if (sum.length != 6) {
         window.alert('The sum requires 6 characters')
-        console.log(sum)
     } else if (calculate_sum(sum)) {
         window.alert('The answer has to be ' + solution.answer)
-        console.log(sum)
     } else {
         var chars = []
         for (i = 0; i < 6; i++) {
             chars.splice(chars.length, 0, sum[i])
         }
-        console.log(chars)
         for (i = 0; i < 7; i++) {
             var char = chars[i]
             if (solution.sum.includes(char)) {
-                if (char == '1') {
-                    if (i == solution.sum.indexOf(chars[i])) { 
-                        jQuery(`#1`).css('background-color', 'lime')
-                        jQuery(`.r${i + 1}c${column}`).css('background-color', 'lime')
-                    } else {
-                        jQuery(`#1`).css('background-color', 'orange')
-                        jQuery(`.r${i + 1}c${column}`).css('background-color', 'orange')
+                if (usedChars.includes(char) == false) {
+                    usedChars.splice(0, 0, char)
+                    if (char == '1') {
+                        if (i == solution.sum.indexOf(chars[i])) { 
+                            jQuery(`#1`).css('background-color', 'lime')
+                            jQuery(`.r${i + 1}c${column}`).css('background-color', 'lime')
+                        } else {
+                            jQuery(`#1`).css('background-color', 'orange')
+                            jQuery(`.r${i + 1}c${column}`).css('background-color', 'orange')
+                        }
                     }
-                }
-                if (char == '2') {
-                    if (i == solution.sum.indexOf(chars[i])) { 
-                        jQuery(`#2`).css('background-color', 'lime')
-                        jQuery(`.r${i + 1}c${column}`).css('background-color', 'lime')
-                    } else {
-                        jQuery(`#2`).css('background-color', 'orange')
-                        jQuery(`.r${i + 1}c${column}`).css('background-color', 'orange')
+                    if (char == '2') {
+                        if (i == solution.sum.indexOf(chars[i])) { 
+                            jQuery(`#2`).css('background-color', 'lime')
+                            jQuery(`.r${i + 1}c${column}`).css('background-color', 'lime')
+                        } else {
+                            jQuery(`#2`).css('background-color', 'orange')
+                            jQuery(`.r${i + 1}c${column}`).css('background-color', 'orange')
+                        }
                     }
-                }
-                if (char == '3') {
-                    if (i == solution.sum.indexOf(chars[i])) { 
-                        jQuery(`#3`).css('background-color', 'lime')
-                        jQuery(`.r${i + 1}c${column}`).css('background-color', 'lime')
-                    } else {
-                        jQuery(`#3`).css('background-color', 'orange')
-                        jQuery(`.r${i + 1}c${column}`).css('background-color', 'orange')
+                    if (char == '3') {
+                        if (i == solution.sum.indexOf(chars[i])) { 
+                            jQuery(`#3`).css('background-color', 'lime')
+                            jQuery(`.r${i + 1}c${column}`).css('background-color', 'lime')
+                        } else {
+                            jQuery(`#3`).css('background-color', 'orange')
+                            jQuery(`.r${i + 1}c${column}`).css('background-color', 'orange')
+                        }
                     }
-                }
-                if (char == '4') {
-                    if (i == solution.sum.indexOf(chars[i])) { 
-                        jQuery(`#4`).css('background-color', 'lime')
-                        jQuery(`.r${i + 1}c${column}`).css('background-color', 'lime')
-                    } else {
-                        jQuery(`#4`).css('background-color', 'orange')
-                        jQuery(`.r${i + 1}c${column}`).css('background-color', 'orange')
+                    if (char == '4') {
+                        if (i == solution.sum.indexOf(chars[i])) { 
+                            jQuery(`#4`).css('background-color', 'lime')
+                            jQuery(`.r${i + 1}c${column}`).css('background-color', 'lime')
+                        } else {
+                            jQuery(`#4`).css('background-color', 'orange')
+                            jQuery(`.r${i + 1}c${column}`).css('background-color', 'orange')
+                        }
                     }
-                }
-                if (char == '5') {
-                    if (i == solution.sum.indexOf(chars[i])) { 
-                        jQuery(`#5`).css('background-color', 'lime')
-                        jQuery(`.r${i + 1}c${column}`).css('background-color', 'lime')
-                    } else {
-                        jQuery(`#5`).css('background-color', 'orange')
-                        jQuery(`.r${i + 1}c${column}`).css('background-color', 'orange')
+                    if (char == '5') {
+                        if (i == solution.sum.indexOf(chars[i])) { 
+                            jQuery(`#5`).css('background-color', 'lime')
+                            jQuery(`.r${i + 1}c${column}`).css('background-color', 'lime')
+                        } else {
+                            jQuery(`#5`).css('background-color', 'orange')
+                            jQuery(`.r${i + 1}c${column}`).css('background-color', 'orange')
+                        }
                     }
-                }
-                if (char == '6') {
-                    if (i == solution.sum.indexOf(chars[i])) { 
-                        jQuery(`#6`).css('background-color', 'lime')
-                        jQuery(`.r${i + 1}c${column}`).css('background-color', 'lime')
-                    } else {
-                        jQuery(`#6`).css('background-color', 'orange')
-                        jQuery(`.r${i + 1}c${column}`).css('background-color', 'orange')
+                    if (char == '6') {
+                        if (i == solution.sum.indexOf(chars[i])) { 
+                            jQuery(`#6`).css('background-color', 'lime')
+                            jQuery(`.r${i + 1}c${column}`).css('background-color', 'lime')
+                        } else {
+                            jQuery(`#6`).css('background-color', 'orange')
+                            jQuery(`.r${i + 1}c${column}`).css('background-color', 'orange')
+                        }
                     }
-                }
-                if (char == '7') {
-                    if (i == solution.sum.indexOf(chars[i])) { 
-                        jQuery(`#7`).css('background-color', 'lime')
-                        jQuery(`.r${i + 1}c${column}`).css('background-color', 'lime')
-                    } else {
-                        jQuery(`#7`).css('background-color', 'orange')
-                        jQuery(`.r${i + 1}c${column}`).css('background-color', 'orange')
+                    if (char == '7') {
+                        if (i == solution.sum.indexOf(chars[i])) { 
+                            jQuery(`#7`).css('background-color', 'lime')
+                            jQuery(`.r${i + 1}c${column}`).css('background-color', 'lime')
+                        } else {
+                            jQuery(`#7`).css('background-color', 'orange')
+                            jQuery(`.r${i + 1}c${column}`).css('background-color', 'orange')
+                        }
                     }
-                }
-                if (char == '8') {
-                    if (i == solution.sum.indexOf(chars[i])) { 
-                        jQuery(`#8`).css('background-color', 'lime')
-                        jQuery(`.r${i + 1}c${column}`).css('background-color', 'lime')
-                    } else {
-                        jQuery(`#8`).css('background-color', 'orange')
-                        jQuery(`.r${i + 1}c${column}`).css('background-color', 'orange')
+                    if (char == '8') {
+                        if (i == solution.sum.indexOf(chars[i])) { 
+                            jQuery(`#8`).css('background-color', 'lime')
+                            jQuery(`.r${i + 1}c${column}`).css('background-color', 'lime')
+                        } else {
+                            jQuery(`#8`).css('background-color', 'orange')
+                            jQuery(`.r${i + 1}c${column}`).css('background-color', 'orange')
+                        }
                     }
-                }
-                if (char == '9') {
-                    if (i == solution.sum.indexOf(chars[i])) { 
-                        jQuery(`#9`).css('background-color', 'lime')
-                        jQuery(`.r${i + 1}c${column}`).css('background-color', 'lime')
-                    } else {
-                        jQuery(`#9`).css('background-color', 'orange')
-                        jQuery(`.r${i + 1}c${column}`).css('background-color', 'orange')
+                    if (char == '9') {
+                        if (i == solution.sum.indexOf(chars[i])) { 
+                            jQuery(`#9`).css('background-color', 'lime')
+                            jQuery(`.r${i + 1}c${column}`).css('background-color', 'lime')
+                        } else {
+                            jQuery(`#9`).css('background-color', 'orange')
+                            jQuery(`.r${i + 1}c${column}`).css('background-color', 'orange')
+                        }
                     }
-                }
-                if (char == '0') {
-                    if (i == solution.sum.indexOf(chars[i])) { 
-                        jQuery(`#0`).css('background-color', 'lime')
-                        jQuery(`.r${i + 1}c${column}`).css('background-color', 'lime')
-                    } else {
-                        jQuery(`#0`).css('background-color', 'orange')
-                        jQuery(`.r${i + 1}c${column}`).css('background-color', 'orange')
+                    if (char == '0') {
+                        if (i == solution.sum.indexOf(chars[i])) { 
+                            jQuery(`#0`).css('background-color', 'lime')
+                            jQuery(`.r${i + 1}c${column}`).css('background-color', 'lime')
+                        } else {
+                            jQuery(`#0`).css('background-color', 'orange')
+                            jQuery(`.r${i + 1}c${column}`).css('background-color', 'orange')
+                        }
                     }
-                }
-                if (char == '+') {
-                    if (i == solution.sum.indexOf(chars[i])) { 
-                        jQuery(`#a`).css('background-color', 'lime')
-                        jQuery(`.r${i + 1}c${column}`).css('background-color', 'lime')
-                    } else {
-                        jQuery(`#a`).css('background-color', 'orange')
-                        jQuery(`.r${i + 1}c${column}`).css('background-color', 'orange')
+                    if (char == '+') {
+                        if (i == solution.sum.indexOf(chars[i])) { 
+                            jQuery(`#a`).css('background-color', 'lime')
+                            jQuery(`.r${i + 1}c${column}`).css('background-color', 'lime')
+                        } else {
+                            jQuery(`#a`).css('background-color', 'orange')
+                            jQuery(`.r${i + 1}c${column}`).css('background-color', 'orange')
+                        }
                     }
-                }
-                if (char == '-') {
-                    if (i == solution.sum.indexOf(chars[i])) { 
-                        jQuery(`#s`).css('background-color', 'lime')
-                        jQuery(`.r${i + 1}c${column}`).css('background-color', 'lime')
-                    } else {
-                        jQuery(`#s`).css('background-color', 'orange')
-                        jQuery(`.r${i + 1}c${column}`).css('background-color', 'orange')
+                    if (char == '-') {
+                        if (i == solution.sum.indexOf(chars[i])) { 
+                            jQuery(`#s`).css('background-color', 'lime')
+                            jQuery(`.r${i + 1}c${column}`).css('background-color', 'lime')
+                        } else {
+                            jQuery(`#s`).css('background-color', 'orange')
+                            jQuery(`.r${i + 1}c${column}`).css('background-color', 'orange')
+                        }
                     }
-                }
-                if (char == '*') {
-                    if (i == solution.sum.indexOf(chars[i])) { 
-                        jQuery(`#m`).css('background-color', 'lime')
-                        jQuery(`.r${i + 1}c${column}`).css('background-color', 'lime')
-                    } else {
-                        jQuery(`#m`).css('background-color', 'orange')
-                        jQuery(`.r${i + 1}c${column}`).css('background-color', 'orange')
+                    if (char == '*') {
+                        if (i == solution.sum.indexOf(chars[i])) { 
+                            jQuery(`#m`).css('background-color', 'lime')
+                            jQuery(`.r${i + 1}c${column}`).css('background-color', 'lime')
+                        } else {
+                            jQuery(`#m`).css('background-color', 'orange')
+                            jQuery(`.r${i + 1}c${column}`).css('background-color', 'orange')
+                        }
                     }
-                }
-                if (char == '/') {
-                    if (i == solution.sum.indexOf(chars[i])) { 
-                        jQuery(`#d`).css('background-color', 'lime')
-                        jQuery(`.r${i + 1}c${column}`).css('background-color', 'lime')
-                    } else {
-                        jQuery(`#d`).css('background-color', 'orange')
-                        jQuery(`.r${i + 1}c${column}`).css('background-color', 'orange')
+                    if (char == '/') {
+                        if (i == solution.sum.indexOf(chars[i])) { 
+                            jQuery(`#d`).css('background-color', 'lime')
+                            jQuery(`.r${i + 1}c${column}`).css('background-color', 'lime')
+                        } else {
+                            jQuery(`#d`).css('background-color', 'orange')
+                            jQuery(`.r${i + 1}c${column}`).css('background-color', 'orange')
+                        }
                     }
-                }
-                
+                } else {
+                    if (isNaN(Number(char))) {
+                        if (char == '+') {
+                            jQuery(`#a`).css('background-color', 'gray')
+                            jQuery(`.r${i + 1}c${column}`).css('background-color', 'gray')
+                        } else if (char == '-') {
+                            jQuery(`#s`).css('background-color', 'gray')
+                            jQuery(`.r${i + 1}c${column}`).css('background-color', 'gray')
+                        } else if (char == '*') {
+                            jQuery(`#m`).css('background-color', 'gray')
+                            jQuery(`.r${i + 1}c${column}`).css('background-color', 'gray')
+                        } else if (char == '/') {
+                            jQuery(`#d`).css('background-color', 'gray')
+                            jQuery(`.r${i + 1}c${column}`).css('background-color', 'gray')
+                        }
+                    } else {
+                        jQuery(`#${char}`).css('background-color', 'gray')
+                        jQuery(`.r${i + 1}c${column}`).css('background-color', 'gray')
+                    }
+                }                
             } else {
                 if (isNaN(Number(char))) {
                     if (char == '+') {
@@ -325,15 +342,11 @@ function calculate(calculation) {
             }
             //calculate sum in brackets
 
-            console.log(operands, operators)
-
             for (i = 0; i < bracket_cal.length + 1; i++) {
                 cal_array.splice(bracket_open_pos, 1)
             }
 
             cal_array.splice(bracket_open_pos, 1, operands[0])
-
-            console.log(cal_array)
             //insert answer in calculation
 
         }
@@ -410,6 +423,39 @@ function generateSum() {
     }
     var fsymbol = symbols[fsymbol]
     var ssymbol = symbols[ssymbol]
-    sum = String(fn) + String(sn) + ' ' + fsymbol + ' ' + tn + ' ' + ssymbol + ' ' + frn
+    twoDigitNumberPosition = Math.round(Math.random() * 2)
+    if (twoDigitNumberPosition == 0) {
+        sum = String(fn) + String(sn) + ' ' + fsymbol + ' ' + tn + ' ' + ssymbol + ' ' + frn
+    } else if (twoDigitNumberPosition == 1) {
+        sum = fn + ' ' + fsymbol + ' ' + String(sn) + String(tn) + ' ' + ssymbol + ' ' + frn
+    } else if (twoDigitNumberPosition == 2) {
+        sum = fn + ' ' + fsymbol + ' ' + sn + ' ' + ssymbol + ' ' + String(tn) + String(frn)
+    }
     return sum
+}
+
+function reset() {
+    row = 1
+    column = 1
+    solution = {}
+    usedChars = []
+    var generatedSum = generateSum()
+    var ans = calculate(generatedSum)
+    while (String(ans).includes('.') || String(ans).includes('-') || ans == Infinity || ans > 200) {
+        generatedSum = generateSum()
+        ans = calculate(generatedSum)   
+    }
+    String(generatedSum)
+    generatedSum = generatedSum.replace(' ', '')
+    generatedSum = generatedSum.replace(' ', '')
+    generatedSum = generatedSum.replace(' ', '')
+    generatedSum = generatedSum.replace(' ', '')
+    solution = {
+        sum: generatedSum,
+        answer: String(ans)
+    }
+    jQuery('#answer').text('The solution is ' + solution.answer)
+    jQuery('.box').css('background-color', 'white')
+    jQuery('.no').css('background-color', 'white')
+    jQuery('.box').text('')
 }

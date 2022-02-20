@@ -26,3 +26,10 @@ label {
     margin-top: 50px;
 }
 
+.btn-trans, .btn-trans:focus, .btn-trans:hover {
+    background-color: gray;
+    color: white;
+    border-radius: 0px;
+    margin-top: 10px;
+    font-size: 20px;    
+}
