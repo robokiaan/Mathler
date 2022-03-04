@@ -311,3 +311,7 @@ function reset() {
     jQuery('.box').text('')
     console.log(generatedSum)
 }
+
+function instructions() {
+    window.location.href = 'instruction.html'
+}
