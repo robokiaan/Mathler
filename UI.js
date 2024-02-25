@@ -1,20 +1,30 @@
 jQuery(document).on('change_typepad_key_colour_gray', function(event, char, i, column) {
     if (isNaN(Number(char))) {
         if (char == '+') {
-            jQuery(`#a`).css('background-color', 'gray')
+            if (jQuery(`#a`).css('background-color') == 'rgb(0, 255, 0)' || jQuery(`#a`).css('background-color') == 'rgb (255, 165, 0)') {} else {
+                jQuery(`#a`).css('background-color', 'gray')
+            }
             jQuery(`.r${i + 1}c${column}`).css('background-color', 'gray')
         } else if (char == '-') {
-            jQuery(`#s`).css('background-color', 'gray')
+            if (jQuery(`#s`).css('background-color') == 'rgb(0, 255, 0)' || jQuery(`#s`).css('background-color') == 'rgb (255, 165, 0)') {} else {
+                jQuery(`#s`).css('background-color', 'gray')
+            }
             jQuery(`.r${i + 1}c${column}`).css('background-color', 'gray')
         } else if (char == '*') {
-            jQuery(`#m`).css('background-color', 'gray')
+            if (jQuery(`#m`).css('background-color') == 'rgb(0, 255, 0)' || jQuery(`#m`).css('background-color') == 'rgb (255, 165, 0)') {} else {
+                jQuery(`#m`).css('background-color', 'gray')
+            }
             jQuery(`.r${i + 1}c${column}`).css('background-color', 'gray')
         } else if (char == '/') {
-            jQuery(`#d`).css('background-color', 'gray')
+            if (jQuery(`#d`).css('background-color') == 'rgb(0, 255, 0)' || jQuery(`#d`).css('background-color') == 'rgb (255, 165, 0)') {} else {
+                jQuery(`#d`).css('background-color', 'gray')
+            }
             jQuery(`.r${i + 1}c${column}`).css('background-color', 'gray')
         }
     } else {
-        jQuery(`#${char}`).css('background-color', 'gray')
+        if (jQuery(`#${char}`).css('background-color') == 'rgb(0, 255, 0)' || jQuery(`#${char}`).css('background-color') == 'rgb (255, 165, 0)') {} else {
+            jQuery(`#${char}`).css('background-color', 'gray')
+        }
         jQuery(`.r${i + 1}c${column}`).css('background-color', 'gray')
     }
 });

@@ -3,6 +3,7 @@ var column = 1
 var row = 1
 var symbols = ['+', '-', '*', '/']
 var usedChars = [] 
+var s = false
 
 jQuery(document).ready(function() {
     var generatedSum = generateSum()
@@ -24,7 +25,46 @@ jQuery(document).ready(function() {
     console.log(generatedSum)
 })
 
+const KEY_HANDLERS = {
+    Digit0: () => input('0'),
+    Digit1: () => input('1'),
+    Digit2: () => input('2'),
+    Digit3: () => input('3'),
+    Digit4: () => input('4'),
+    Digit5: () => input('5'),
+    Digit6: () => input('6'),
+    Digit7: () => input('7'),
+    Digit8: () => input('8'),
+    Digit9: () => input('9'),
+    Minus: () => input('-'),
+    Slash: () => input('/'),
+    Backspace: () => Delete(),
+    Delete: () => Delete(),
+    Enter: () => enter(),
+    ShiftRight: () => '',
+    ShiftLeft: () => '',
+    Equal: () => input('+'),
+    KeyR: () => reset()
+};
+  
+document.addEventListener('keydown', (e) => {
+    e.preventDefault();
+    const handler = KEY_HANDLERS[e.code];
+    if (handler) {
+        if (e.code == 'ShiftRight' || e.code == 'ShiftLeft') {
+            s = true
+        }
+        handler();
+    }
+});
+
 function input(text) {
+    if (s == true) {
+        if (text == '8') {
+            text = '*'
+        }
+        s = false
+    }
     jQuery(`.r${row}c${column}`).text(text)
     if (column == 7) {
          window.alert('Game over')
